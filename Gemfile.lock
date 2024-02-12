@@ -93,6 +93,8 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 4.1)
   jekyll-feed (~> 0.6)
+  jekyll-include-cache
+  jekyll-seo-tag
   jekyll-theme-chirpy (~> 6.4)
   kramdown-parser-gfm
   minima (~> 2.0)
