@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>awk on Some Title</title>
-    <link>https://example.com/tags/awk/</link>
+    <link>https://xshiraori.github.io/tags/awk/</link>
     <description>Recent content in awk on Some Title</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 11 Oct 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/tags/awk/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xshiraori.github.io/tags/awk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Script to add a page-level variable to content front matter in hugo</title>
-      <link>https://example.com/script-to-add-a-page-level-variable-to-content-front-matter-in-hugo/</link>
+      <link>https://xshiraori.github.io/script-to-add-a-page-level-variable-to-content-front-matter-in-hugo/</link>
       <pubDate>Wed, 10 Oct 2018 12:43:20 -0500</pubDate>
-      <guid>https://example.com/script-to-add-a-page-level-variable-to-content-front-matter-in-hugo/</guid>
+      <guid>https://xshiraori.github.io/script-to-add-a-page-level-variable-to-content-front-matter-in-hugo/</guid>
       <description>This was originally a question posed on the hugo discussion forums.&#xA;The user wanted to loop through all her content files and add a weight page-level variable to the front matter. The value of weight needed to be the first 2 characters of the content filename, since her content was named like 01_content.md, 02_content.md, etc.&#xA;She then wanted to range through her pages by their weight, like so:&#xA;{{ range .</description>
     </item>
   </channel>
