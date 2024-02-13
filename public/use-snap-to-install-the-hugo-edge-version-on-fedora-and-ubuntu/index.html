@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.122.0">
 
   
   <meta name="description" content="Some description">
@@ -170,7 +170,7 @@ blockquote,
   <nav class="custom-navbar">
   <div class="container">
     
-    <a href="/">Posts</a>
+    <a href="/">Nay</a>
     
     <a href="/about/">About</a>
     
@@ -195,14 +195,14 @@ blockquote,
 <p>To get started, <a href="https://docs.snapcraft.io/installing-snap-on-fedora/6755">install Snap on Fedora</a>:</p>
 <pre tabindex="0"><code>sudo dnf install snapd
 </code></pre><p>Add the <a href="https://docs.snapcraft.io/commands-and-aliases/3950">Snap directory</a> to your <code>PATH</code> by adding this line to your <code>~/.bashrc</code> file. Then restart your terminal to pick up the change:</p>
-<pre tabindex="0"><code>export PATH=&quot;$PATH:/var/lib/snapd/snap/bin&quot;
+<pre tabindex="0"><code>export PATH=&#34;$PATH:/var/lib/snapd/snap/bin&#34;
 </code></pre><h2 id="ubuntu-only-steps">Ubuntu-only steps</h2>
 <p>Ubuntu 16.04 and above come with <a href="https://docs.snapcraft.io/installing-snap-on-ubuntu/6740">Snap already installed</a>. If you&rsquo;re using an older Ubuntu version, install Snap by running:</p>
 <pre tabindex="0"><code>sudo apt update &amp;&amp; sudo apt install snapd
 </code></pre><p>Check if the Snap directory is on your <code>PATH</code> by listing each entry:</p>
-<pre tabindex="0"><code>echo $PATH | tr ':' '\n'
+<pre tabindex="0"><code>echo $PATH | tr &#39;:&#39; &#39;\n&#39;
 </code></pre><p>If you don&rsquo;t see <code>/snap/bin</code> listed, then add this line to your <code>~/.bashrc</code> file. Then restart your terminal to pick up the change:</p>
-<pre tabindex="0"><code>export PATH=&quot;$PATH:/snap/bin&quot;
+<pre tabindex="0"><code>export PATH=&#34;$PATH:/snap/bin&#34;
 </code></pre><h2 id="install-hugo">Install Hugo</h2>
 <p>See which Snap channels are available for Hugo:</p>
 <pre tabindex="0"><code>snap info hugo
