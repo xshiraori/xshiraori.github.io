@@ -19,7 +19,9 @@ jobs:
         extended: true
         
     - name: Build
-      run: hugo --themesDir ./themes
+      run: |
+        hugo --themesDir ./themes
+        touch public/.nojekyll
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
