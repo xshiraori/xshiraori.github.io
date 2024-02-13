@@ -1,6 +1,6 @@
 baseURL = "https://xshiraori.github.io/"
 languageCode = "en-us"
-title = "Some Title"
+title = "xsh"
 theme = "minimal-bootstrap-hugo-theme"
 
 [taxonomies]
