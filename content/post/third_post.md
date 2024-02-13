@@ -1,5 +1,5 @@
 ---
-title: "My second post"
+title: "My second post 3"
 date: "2014-04-02"
 publishdate: "2014-04-02"
 lastmod: "2014-04-02"
