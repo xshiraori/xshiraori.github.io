@@ -23,39 +23,11 @@
       <description>This was originally a question posed on the hugo discussion forums.&#xA;The user wanted to loop through all her content files and add a weight page-level variable to the front matter. The value of weight needed to be the first 2 characters of the content filename, since her content was named like 01_content.md, 02_content.md, etc.&#xA;She then wanted to range through her pages by their weight, like so:&#xA;{{ range .</description>
     </item>
     <item>
-      <title>Creating a New Theme</title>
-      <link>https://xshiraori.github.io/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      <guid>https://xshiraori.github.io/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.&#xA;We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://xshiraori.github.io/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      <guid>https://xshiraori.github.io/goisforlovers/</guid>
-      <description>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Go templates provide an extremely simple template language. It adheres to the belief that only the most basic of logic belongs in the template or view layer. One consequence of this simplicity is that Go templates parse very quickly.&#xA;A unique characteristic of Go templates is they are content aware. Variables and content will be sanitized depending on the context of where they are used. More details can be found in the Go docs.</description>
-    </item>
-    <item>
-      <title>Getting Started with Hugo</title>
-      <link>https://xshiraori.github.io/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      <guid>https://xshiraori.github.io/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.&#xA;Save it somewhere specific as we will be using it in the next step.&#xA;More complete instructions are available at Install Hugo&#xA;Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.&#xA;Follow the following steps:&#xA;Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313 Corresponding pseudo commands:</description>
-    </item>
-    <item>
       <title>My Second post</title>
       <link>https://xshiraori.github.io/second_post/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       <guid>https://xshiraori.github.io/second_post/</guid>
       <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.&#xA;Save it somewhere specific as we will be using it in the next step.&#xA;More complete instructions are available at Install Hugo&#xA;Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.&#xA;Follow the following steps:&#xA;Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313 Corresponding pseudo commands:</description>
-    </item>
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://xshiraori.github.io/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      <guid>https://xshiraori.github.io/migrate-from-jekyll/</guid>
-      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like&#xA;▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png should become&#xA;▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
     </item>
   </channel>
 </rss>

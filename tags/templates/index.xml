@@ -6,21 +6,27 @@
     <description>Recent content in templates on Some Title</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://xshiraori.github.io/tags/templates/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://xshiraori.github.io/tags/templates/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>(Hu)go Template Primer</title>
       <link>https://xshiraori.github.io/goisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
       <guid>https://xshiraori.github.io/goisforlovers/</guid>
-      <description>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Go templates provide an extremely simple template language. It adheres to the belief that only the most basic of logic belongs in the template or view layer. One consequence of this simplicity is that Go templates parse very quickly.&#xA;A unique characteristic of Go templates is they are content aware. Variables and content will be sanitized depending on the context of where they are used. More details can be found in the Go docs.</description>
+      <description>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Go templates provide an extremely simple template language. It adheres to the belief that only the most basic of logic belongs in the template or view layer. One consequence of this simplicity is that Go templates parse very quickly.
+A unique characteristic of Go templates is they are content aware. Variables and content will be sanitized depending on the context of where they are used. More details can be found in the Go docs.</description>
     </item>
+    
     <item>
       <title>Migrate to Hugo from Jekyll</title>
       <link>https://xshiraori.github.io/migrate-from-jekyll/</link>
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
       <guid>https://xshiraori.github.io/migrate-from-jekyll/</guid>
-      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like&#xA;▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png should become&#xA;▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
+▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
+▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
     </item>
+    
   </channel>
 </rss>
