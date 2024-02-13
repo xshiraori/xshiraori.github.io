@@ -34,19 +34,19 @@ theme = "minimal-bootstrap-hugo-theme"
 [menu]
   [[menu.nav]]
   name = "Posts"
-  url = "/"
+  url = "/public"
   weight = 1
   [[menu.nav]]
   name = "Tags"
-  url = "/tags/"
+  url = "public/tags/"
   weight = 2
   [[menu.nav]]
   name = "About"
-  url = "/about/"
+  url = "public/about/"
   weight = 3
   [[menu.nav]]
   name = "RSS"
-  url = "/index.xml"
+  url = "public/index.xml"
   weight = 4
 
 [markup]
