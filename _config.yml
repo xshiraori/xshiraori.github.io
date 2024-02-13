@@ -10,6 +10,7 @@ plugins:
   - jekyll-include-cache
   - jekyll-seo-tag
 theme_mode: dark
+baseurl: "/xshiraori"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
