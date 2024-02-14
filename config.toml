@@ -37,7 +37,7 @@ theme = "minimal-bootstrap-hugo-theme"
   url = "/"
   weight = 1
   [[menu.nav]]
-  name = "Archive"
+  name = "About"
   url = "/about/"
   weight = 2
 
