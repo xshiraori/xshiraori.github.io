@@ -1,8 +1,11 @@
 ---
-title: "About"
-date: "2014-04-09"
+title: "Test"
+date: 2018-10-26T12:59:51-05:00
+publishdate: 2018-10-26
+lastmod: 2018-10-26
+draft: false
+aliases:
+  - /test/
 ---
-# Hey!
-<span style="color:black;font-weight:300;font-size:18px">
-    Soon I will be posting tech stuff on this blog.
-</span>
+
+Hey!
