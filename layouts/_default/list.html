@@ -1,9 +1,8 @@
 {{- define "main" -}}
-
 {{ $pages := .Pages }}
 {{ range $pages.ByPublishDate.Reverse }}
   <p>
-    <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
+    <a href="{{ .Permalink }}" style="color: #212529; font-weight: bold; font-size: 1.25rem; text-decoration: none;">{{ .Title | markdownify }}</a>
     {{ $customDateFormat := "January 2, 2006" }}
     {{ with .Site.Params.customDateFormat }}{{ $customDateFormat = . }}{{ end }}
     <br>
@@ -15,5 +14,4 @@
     {{ end }}
   </p>
 {{ end }}
-
 {{- end -}}
