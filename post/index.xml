@@ -19,26 +19,6 @@ nsiproxy is a broker between the user mode clients and the kernel mode nsi provi
     </item>
     
     <item>
-      <title>Test</title>
-      <link>https://xshiraori.github.io/test/</link>
-      <pubDate>Fri, 26 Oct 2018 12:59:51 -0500</pubDate>
-      
-      <guid>https://xshiraori.github.io/test/</guid>
-      <description>Hello WOrld!</description>
-    </item>
-    
-    <item>
-      <title>Use Snap to install the Hugo edge version on Fedora and Ubuntu</title>
-      <link>https://xshiraori.github.io/use-snap-to-install-the-hugo-edge-version-on-fedora-and-ubuntu/</link>
-      <pubDate>Fri, 26 Oct 2018 12:59:51 -0500</pubDate>
-      
-      <guid>https://xshiraori.github.io/use-snap-to-install-the-hugo-edge-version-on-fedora-and-ubuntu/</guid>
-      <description>If you are using the Fedora or Ubuntu Linux distributions &amp;ndash; I&amp;rsquo;m currently on Fedora 28 &amp;ndash; and would like to help test the latest development version of Hugo, or if you just want to be on the bleeding-edge of things, this post is for you.
-Fedora-only steps To get started, install Snap on Fedora:
-sudo dnf install snapd Add the Snap directory to your PATH by adding this line to your ~/.</description>
-    </item>
-    
-    <item>
       <title>Script to add a page-level variable to content front matter in hugo</title>
       <link>https://xshiraori.github.io/script-to-add-a-page-level-variable-to-content-front-matter-in-hugo/</link>
       <pubDate>Wed, 10 Oct 2018 12:43:20 -0500</pubDate>
