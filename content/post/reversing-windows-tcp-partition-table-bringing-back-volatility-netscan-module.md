@@ -331,9 +331,7 @@ ffffc48d`3ef304c0  00000000`00000bf4 -> PID: 3060
 
 Time to confirm with netstat:
 
-![](C:\Users\Dou\AppData\Roaming\marktext\images\2026-02-09-02-59-32-image.png)
-
-
+![](https://ibb.co/6c3L02JJ)
 
 Here is a script that iterates and prints the connections inside those hash tables: [Enumerate TCP · GitHub](https://gist.github.com/xshiraori/c084ceb636f02616a549a3cb22ff0f39)
 
