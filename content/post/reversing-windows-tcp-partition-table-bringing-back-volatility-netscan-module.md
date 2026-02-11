@@ -1,5 +1,5 @@
 ---
-title: "Reversing TCP PartitionTable: bringing back Volatility's netscan module"
+title: "Reversing Windows' TCP PartitionTable: how GetTcpTable and netstat works under the hood"
 date: 2026-02-10T00:00:00+00:00
 publishdate: 2026-02-10
 lastmod: 2026-02-11
@@ -8,7 +8,7 @@ aliases:
   - /reversing-windows-tcp-partition-table-bringing-back-volatility-netscan-module/
 ---
 
-
+Let's trace what happens when you use the "netstat" command, from usermode all the way down to the kernel hash tables that store TCP connections inside tcpip.sys.
 
 We start tracing from `GetTcpTable`, which is just a wrapper over `GetTcpTableInternal`. This function is responsible for processing the TCP table data returned from a call to `NsiAllocateAndGetTable` . 
 
