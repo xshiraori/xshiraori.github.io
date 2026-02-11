@@ -11,7 +11,7 @@
     <item>
       <title>Reverse engineering Windows&#39; TCP PartitionTable, bringing back Volatility&#39;s good old netscan module</title>
       <link>https://xshiraori.github.io/reversing-windows-tcp-partition-table-bringing-back-volatility-netscan-module/</link>
-      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://xshiraori.github.io/reversing-windows-tcp-partition-table-bringing-back-volatility-netscan-module/</guid>
       <description>&lt;p&gt;We start tracing from &lt;code&gt;GetTcpTable&lt;/code&gt;, which is just a wrapper over &lt;code&gt;GetTcpTableInternal&lt;/code&gt;. This function is responsible for processing the TCP table data returned from a call to &lt;code&gt;NsiAllocateAndGetTable&lt;/code&gt; .&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;NsiAllocateAndGetTable&lt;/code&gt; carries our analysis to the kernel side, by invoking the handler for &lt;code&gt;0x12001B&lt;/code&gt;  IOCTL code of the &lt;code&gt;nsiproxy.sys&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;nsiproxy is a broker between the user mode clients and the kernel mode nsi providers, let&amp;rsquo;s take a look at &lt;code&gt;nsiproxy!NsippDispatch&lt;/code&gt; to see which provider it will have to trigger in our case.&lt;/p&gt;</description>
     </item>
