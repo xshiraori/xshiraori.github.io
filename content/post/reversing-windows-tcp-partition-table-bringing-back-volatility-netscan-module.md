@@ -1,5 +1,5 @@
 ---
-title: "Reverse engineering TCP PartitionTable: bringing back Volatility's good old netscan module"
+title: "Reversing TCP PartitionTable: bringing back Volatility's netscan module"
 date: 2026-02-10T00:00:00+00:00
 publishdate: 2026-02-10
 lastmod: 2026-02-11
