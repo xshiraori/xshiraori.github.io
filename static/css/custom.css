@@ -2,10 +2,10 @@ article > h1 {
     font-size: 1.5rem;
 }
 
-.post-title a {
+
+article p a {
     color: #212529;
     font-weight: bold;
-}
-.post-title a:hover {
-    color: #007bff;
+    font-size: 1.25rem;
+    text-decoration: none;
 }
