@@ -31,6 +31,7 @@ theme = "minimal-bootstrap-hugo-theme"
   faviconMsApplicationTileColor = "#da532c"
   faviconThemeColor = "#ffffff"
   buildFuture = true
+  customCSS = "custom.css"
 
 [menu]
   [[menu.nav]]
