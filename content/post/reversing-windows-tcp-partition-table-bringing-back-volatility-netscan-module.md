@@ -1,6 +1,6 @@
 ---
 title: "Reverse engineering Windows' TCP PartitionTable, bringing back Volatility's good old netscan module"
-date: 2026-02-10T00:00:00-05:00
+date: 2026-02-10T00:00:00+00:00
 publishdate: 2026-02-10
 lastmod: 2026-02-11
 draft: false
