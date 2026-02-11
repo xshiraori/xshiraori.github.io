@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.119.0">
+  <meta name="generator" content="Hugo 0.155.3">
 
   
   <meta name="description" content="Some description">
@@ -193,20 +193,20 @@ blockquote,
 <p>We start tracing from <code>GetTcpTable</code>, which is just a wrapper over <code>GetTcpTableInternal</code>. This function is responsible for processing the TCP table data returned from a call to <code>NsiAllocateAndGetTable</code> .</p>
 <p><code>NsiAllocateAndGetTable</code> carries our analysis to the kernel side, by invoking the handler for <code>0x12001B</code>  IOCTL code of the <code>nsiproxy.sys</code></p>
 <p>nsiproxy is a broker between the user mode clients and the kernel mode nsi providers, let&rsquo;s take a look at <code>nsiproxy!NsippDispatch</code> to see which provider it will have to trigger in our case.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> ( LowPart )
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> ( LowPart )
 </span></span><span style="display:flex;"><span>  {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0x12001B</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>      Parameter <span style="color:#f92672">=</span> <span style="color:#a6e22e">NsippEnumerateObjectsAllParameters</span>(Parameters, Options, RequestorMode, <span style="color:#f92672">&amp;</span>a2<span style="color:#f92672">-&gt;</span>IoStatus.Information);
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
 </span></span><span style="display:flex;"><span>...
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">__int64</span> nsiproxy<span style="color:#f92672">!</span><span style="color:#a6e22e">NsippEnumerateObjectsAllParameters</span>(__int128 <span style="color:#f92672">*</span>Address, SIZE_T Length, <span style="color:#66d9ef">char</span> a3, _QWORD <span style="color:#f92672">*</span>a4)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">__int64</span> nsiproxy<span style="color:#f92672">!</span><span style="color:#a6e22e">NsippEnumerateObjectsAllParameters</span>(__int128 <span style="color:#f92672">*</span>Address, SIZE_T Length, <span style="color:#66d9ef">char</span> a3, _QWORD <span style="color:#f92672">*</span>a4)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    ... <span style="color:#75715e">// here it will probe the buffer for write
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">NsiEnumerateObjectsAllParametersEx</span>(v14);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">NsiEnumerateObjectsAllParametersEx</span>(v14);
 </span></span><span style="display:flex;"><span>    ...
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// netio!NsiEnumerateObjectsAllParametersEx
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">__int64</span> <span style="color:#a6e22e">NsiEnumerateObjectsAllParametersEx</span>(<span style="color:#66d9ef">__int64</span> req)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// netio!NsiEnumerateObjectsAllParametersEx
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">__int64</span> <span style="color:#a6e22e">NsiEnumerateObjectsAllParametersEx</span>(<span style="color:#66d9ef">__int64</span> req)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (entry <span style="color:#f92672">=</span> NsiNmpList; entry <span style="color:#f92672">!=</span> <span style="color:#f92672">&amp;</span>NsiNmpList; entry <span style="color:#f92672">=</span> entry<span style="color:#f92672">-&gt;</span>Flink)
 </span></span><span style="display:flex;"><span>    {
@@ -223,10 +223,10 @@ blockquote,
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>NsiEnumerateObjectsAllParametersEx</code> does a lookup on NsiNpmList hoping to find the provider specified by the caller. It will find the <code>TcpInformationObject</code> of the requested module and execute the handler.</p>
 <p>the NsiNpmList looks to belong to be a structure like this</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> _NMP_MODULE{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> _NMP_MODULE{
 </span></span><span style="display:flex;"><span>    DWORD Length;
 </span></span><span style="display:flex;"><span>    DWORD Type; <span style="color:#75715e">// set to 1 for the GUID
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    DWORD Guid[<span style="color:#ae81ff">4</span>];
+</span></span></span><span style="display:flex;"><span>    DWORD Guid[<span style="color:#ae81ff">4</span>];
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> _NMP_CONTEXT{
@@ -236,7 +236,7 @@ blockquote,
 </span></span><span style="display:flex;"><span>    QWORD Unknown;
 </span></span><span style="display:flex;"><span>    QWORD<span style="color:#f92672">*</span> ProviderDispatch;
 </span></span><span style="display:flex;"><span>    QWORD<span style="color:#f92672">*</span> DispatchTable; <span style="color:#75715e">// in TCP case it&#39;s TcpNsiInterfaceDispatch
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>for the TCP case the provider GUID is <code>{eb004a03-9b1a-11d4-9123-0050047759bc}</code>, I&rsquo;ve found it on the 4th entry.</p>
 <pre tabindex="0"><code>2: kd&gt; dq ffffc48d`3bdf0178 &lt;- this is the _NMP_CONTEXT entry
 ffffc48d`3bdf0178  ffffc48d`3bdf0318 ffffc48d`3bddb4b8
@@ -279,12 +279,12 @@ fffff801`1dcb5d89 e8f6020000      call    tcpip!TcpEnumerateConnectionType (ffff
 fffff801`1dcb5d8e 4883c428        add     rsp,28h
 fffff801`1dcb5d92 c3              ret
 </code></pre><p>We can see that GetTcpTable hardcoded the fourth entry for the kernel module to use it:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>ULONG <span style="color:#a6e22e">GetTcpTable</span>(PMIB_TCPTABLE TcpTable, PULONG SizePointer, BOOL Order)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>ULONG <span style="color:#a6e22e">GetTcpTable</span>(PMIB_TCPTABLE TcpTable, PULONG SizePointer, BOOL Order)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">GetTcpTableInternal</span>(TcpTable, SizePointer, Order, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>So far so good, we found the function responsible for fetching, <code>TcpEnumerateConnectionType(2)</code> is the call that is responsible for fetching the table data. <code>2</code> stands for <code>ENUMERATE_CONNECTIONS</code>, there are some other options available, which I would call them:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> _TCP_ENUMERATE_TYPE
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> _TCP_ENUMERATE_TYPE
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    CONNECTIONS <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
 </span></span><span style="display:flex;"><span>    LISTENERS <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
@@ -293,7 +293,7 @@ fffff801`1dcb5d92 c3              ret
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>TcpEnumerateConnectionType</code> is responsible for iterating the partition table, which consist of connections with the status of <code>ESTABLISHED_TCB</code>, <code>TIME_WAIT</code> and <code>SYN_TCB</code> (in memory order).</p>
 <p>The pseudocode for this function looks like below:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">__int64</span> <span style="color:#a6e22e">TcpEnumerateConnections</span>(AF, KeyBuf, RwBuf, RoBuf, MaxEntries, <span style="color:#f92672">*</span>Count)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">__int64</span> <span style="color:#a6e22e">TcpEnumerateConnections</span>(AF, KeyBuf, RwBuf, RoBuf, MaxEntries, <span style="color:#f92672">*</span>Count)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    AfObject <span style="color:#f92672">=</span> <span style="color:#a6e22e">InetFindAndReferenceAf</span>(<span style="color:#f92672">&amp;</span>TcpInetTransport, AF);
 </span></span><span style="display:flex;"><span>    CompartmentId <span style="color:#f92672">=</span> <span style="color:#a6e22e">NdisGetThreadObjectCompartmentId</span>(<span style="color:#a6e22e">KeGetCurrentThread</span>());
@@ -304,11 +304,11 @@ fffff801`1dcb5d92 c3              ret
 </span></span><span style="display:flex;"><span>        HashTables <span style="color:#f92672">=</span> Partition<span style="color:#f92672">-&gt;</span>HashTables;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// established TCBs (hash table [0])
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">RtlInitWeakEnumerationHashTable</span>(<span style="color:#f92672">&amp;</span>HashTables[<span style="color:#ae81ff">0</span>], <span style="color:#f92672">&amp;</span>Enum);
+</span></span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">RtlInitWeakEnumerationHashTable</span>(<span style="color:#f92672">&amp;</span>HashTables[<span style="color:#ae81ff">0</span>], <span style="color:#f92672">&amp;</span>Enum);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (entry <span style="color:#f92672">=</span> <span style="color:#a6e22e">RtlWeaklyEnumerateEntryHashTable</span>(<span style="color:#f92672">&amp;</span>HashTables[<span style="color:#ae81ff">0</span>], <span style="color:#f92672">&amp;</span>Enum))
 </span></span><span style="display:flex;"><span>        {
 </span></span><span style="display:flex;"><span>            Tcb <span style="color:#f92672">=</span> entry <span style="color:#f92672">-</span> <span style="color:#ae81ff">0x28</span>; <span style="color:#75715e">// the size of hash table struct
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (Tcb<span style="color:#f92672">-&gt;</span>Flags <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">&amp;&amp;</span> Tcb<span style="color:#f92672">-&gt;</span>AF <span style="color:#f92672">==</span> AfObject <span style="color:#f92672">&amp;&amp;</span> Tcb<span style="color:#f92672">-&gt;</span>Compartment <span style="color:#f92672">==</span> CompartmentId)
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (Tcb<span style="color:#f92672">-&gt;</span>Flags <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">&amp;&amp;</span> Tcb<span style="color:#f92672">-&gt;</span>AF <span style="color:#f92672">==</span> AfObject <span style="color:#f92672">&amp;&amp;</span> Tcb<span style="color:#f92672">-&gt;</span>Compartment <span style="color:#f92672">==</span> CompartmentId)
 </span></span><span style="display:flex;"><span>            {
 </span></span><span style="display:flex;"><span>                KeyBuf[<span style="color:#f92672">*</span>Count] <span style="color:#f92672">=</span> { LocalAddr, LocalPort, RemoteAddr, RemotePort};
 </span></span><span style="display:flex;"><span>                RwBuf[<span style="color:#f92672">*</span>Count]  <span style="color:#f92672">=</span> { <span style="color:#a6e22e">PsGetProcessId</span>(Tcb<span style="color:#f92672">-&gt;</span>Process), Timestamps };
@@ -317,7 +317,7 @@ fffff801`1dcb5d92 c3              ret
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// SYN TCB (hash table [3])
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">RtlInitWeakEnumerationHashTable</span>(<span style="color:#f92672">&amp;</span>HashTables[<span style="color:#ae81ff">3</span>], <span style="color:#f92672">&amp;</span>Enum);
+</span></span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">RtlInitWeakEnumerationHashTable</span>(<span style="color:#f92672">&amp;</span>HashTables[<span style="color:#ae81ff">3</span>], <span style="color:#f92672">&amp;</span>Enum);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (entry <span style="color:#f92672">=</span> <span style="color:#a6e22e">RtlWeaklyEnumerateEntryHashTable</span>(<span style="color:#f92672">&amp;</span>HashTables[<span style="color:#ae81ff">3</span>], <span style="color:#f92672">&amp;</span>Enum))
 </span></span><span style="display:flex;"><span>        {
 </span></span><span style="display:flex;"><span>            SynTcb <span style="color:#f92672">=</span> entry <span style="color:#f92672">-</span> <span style="color:#ae81ff">0x10</span>;
@@ -326,11 +326,11 @@ fffff801`1dcb5d92 c3              ret
 </span></span><span style="display:flex;"><span>                KeyBuf[<span style="color:#f92672">*</span>Count] <span style="color:#f92672">=</span> { LocalAddr, LocalPort, RemoteAddr, RemotePort };
 </span></span><span style="display:flex;"><span>                RwBuf[<span style="color:#f92672">*</span>Count]  <span style="color:#f92672">=</span> { PID, Timestamps <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> };
 </span></span><span style="display:flex;"><span>                RoBuf[<span style="color:#f92672">*</span>Count]  <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;   <span style="color:#75715e">// SYN_RECEIVED
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            }
+</span></span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// TIME_WAIT TCB (hash table [1])
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">RtlInitWeakEnumerationHashTable</span>(<span style="color:#f92672">&amp;</span>HashTables[<span style="color:#ae81ff">1</span>], <span style="color:#f92672">&amp;</span>Enum);
+</span></span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">RtlInitWeakEnumerationHashTable</span>(<span style="color:#f92672">&amp;</span>HashTables[<span style="color:#ae81ff">1</span>], <span style="color:#f92672">&amp;</span>Enum);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (entry <span style="color:#f92672">=</span> <span style="color:#a6e22e">RtlWeaklyEnumerateEntryHashTable</span>(<span style="color:#f92672">&amp;</span>HashTables[<span style="color:#ae81ff">1</span>], <span style="color:#f92672">&amp;</span>Enum))
 </span></span><span style="display:flex;"><span>        {
 </span></span><span style="display:flex;"><span>            TwTcb <span style="color:#f92672">=</span> entry;
@@ -339,12 +339,12 @@ fffff801`1dcb5d92 c3              ret
 </span></span><span style="display:flex;"><span>                KeyBuf[<span style="color:#f92672">*</span>Count] <span style="color:#f92672">=</span> { LocalAddr, LocalPort, RemoteAddr, RemotePort};
 </span></span><span style="display:flex;"><span>                RwBuf[<span style="color:#f92672">*</span>Count]  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>                RoBuf[<span style="color:#f92672">*</span>Count]  <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>;   <span style="color:#75715e">// TIME_WAIT
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            }
+</span></span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Overall the <code>_TCB</code> definition looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _IN_ADDR_DATA {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _IN_ADDR_DATA {
 </span></span><span style="display:flex;"><span>    ULONG       Address;
 </span></span><span style="display:flex;"><span>    PVOID       Next;
 </span></span><span style="display:flex;"><span>    ULONG_PTR   Flags;
@@ -374,17 +374,17 @@ fffff801`1dcb5d92 c3              ret
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _TCB {
 </span></span><span style="display:flex;"><span>    KSPIN_LOCK  Lock;                   <span style="color:#75715e">// 0x0
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    PTCP_ADDR_INFO AddrInfo;            <span style="color:#75715e">// 0x18
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    RTL_DYNAMIC_HASH_TABLE_ENTRY HashEntry; <span style="color:#75715e">// 0x28
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    LONG RefCount;                      <span style="color:#75715e">// 0x68
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ULONG       InternalState;          <span style="color:#75715e">// 0x6C
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    USHORT      LocalPort;              <span style="color:#75715e">// 0x70
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    USHORT      RemotePort;             <span style="color:#75715e">// 0x72
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ULONG       ValidationFlags;        <span style="color:#75715e">// 0x74  &amp; 4 means valid
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    UCHAR       LocalAddrType;          <span style="color:#75715e">// 0x2B0
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    UCHAR       RemoteAddrType;         <span style="color:#75715e">// 0x2B1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    PEPROCESS   OwningProcess;          <span style="color:#75715e">// 0x2D8
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} TCB, <span style="color:#f92672">*</span>PTCB;
+</span></span></span><span style="display:flex;"><span>    PTCP_ADDR_INFO AddrInfo;            <span style="color:#75715e">// 0x18
+</span></span></span><span style="display:flex;"><span>    RTL_DYNAMIC_HASH_TABLE_ENTRY HashEntry; <span style="color:#75715e">// 0x28
+</span></span></span><span style="display:flex;"><span>    LONG RefCount;                      <span style="color:#75715e">// 0x68
+</span></span></span><span style="display:flex;"><span>    ULONG       InternalState;          <span style="color:#75715e">// 0x6C
+</span></span></span><span style="display:flex;"><span>    USHORT      LocalPort;              <span style="color:#75715e">// 0x70
+</span></span></span><span style="display:flex;"><span>    USHORT      RemotePort;             <span style="color:#75715e">// 0x72
+</span></span></span><span style="display:flex;"><span>    ULONG       ValidationFlags;        <span style="color:#75715e">// 0x74  &amp; 4 means valid
+</span></span></span><span style="display:flex;"><span>    UCHAR       LocalAddrType;          <span style="color:#75715e">// 0x2B0
+</span></span></span><span style="display:flex;"><span>    UCHAR       RemoteAddrType;         <span style="color:#75715e">// 0x2B1
+</span></span></span><span style="display:flex;"><span>    PEPROCESS   OwningProcess;          <span style="color:#75715e">// 0x2D8
+</span></span></span><span style="display:flex;"><span>} TCB, <span style="color:#f92672">*</span>PTCB;
 </span></span></code></pre></div><p>Now let&rsquo;s see this in action, let&rsquo;s enumerate IP addresses of live connections on WinDbg.</p>
 <p>First reference the <code>tcpip!PartitionTable</code>, first entry is the SPIN_LOCK so jump onto the second entry, it is the first hash table entry of type <code>_RTL_DYNAMIC_HASH_TABLE</code></p>
 <pre tabindex="0"><code>2: kd&gt; dt _RTL_DYNAMIC_HASH_TABLE poi(poi(tcpip!PartitionTable)+8)
