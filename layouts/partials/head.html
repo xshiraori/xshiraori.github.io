@@ -38,9 +38,9 @@
       {{ $homepage = .Name }}
     {{ end }}
   {{ end }}
-  <title>{{ $homepage }} | {{ .Site.Title }}</title>
+  <title>{{ $homepage }}</title>
   {{ else }}
-  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <title>{{ .Title }}</title>
   {{ end }}
 
   {{ partial "style.html" . }}
