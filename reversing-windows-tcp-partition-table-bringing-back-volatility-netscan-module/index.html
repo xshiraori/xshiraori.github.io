@@ -190,6 +190,7 @@ blockquote,
   
 
 </p>
+<h2 id="reversing-windows-tcp-partitiontable-how-gettcptable-and-netstat-works-under-the-hood">Reversing Windows’ TCP PartitionTable: how GetTcpTable and netstat works under the hood</h2>
 <p>Let's trace what happens when you use the &ldquo;netstat&rdquo; command, from usermode all the way down to the kernel hash tables that store TCP connections inside tcpip.sys.</p>
 <p>We start tracing from <code>GetTcpTable</code>, which is just a wrapper over <code>GetTcpTableInternal</code>. This function is responsible for processing the TCP table data returned from a call to <code>NsiAllocateAndGetTable</code> .</p>
 <p><code>NsiAllocateAndGetTable</code> carries our analysis to the kernel side, by invoking the handler for <code>0x12001B</code>  IOCTL code of the <code>nsiproxy.sys</code></p>
