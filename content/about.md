@@ -5,5 +5,4 @@ lastmod: 2018-10-26
 draft: false
 ---
 
-Hey!
-
+Nothing here yet :D
