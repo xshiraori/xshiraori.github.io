@@ -8,6 +8,8 @@ aliases:
   - /reversing-windows-tcp-partition-table-bringing-back-volatility-netscan-module/
 ---
 
+## Reversing Windows’ TCP PartitionTable: how GetTcpTable and netstat works under the hood
+
 Let's trace what happens when you use the "netstat" command, from usermode all the way down to the kernel hash tables that store TCP connections inside tcpip.sys.
 
 We start tracing from `GetTcpTable`, which is just a wrapper over `GetTcpTableInternal`. This function is responsible for processing the TCP table data returned from a call to `NsiAllocateAndGetTable` . 
