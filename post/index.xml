@@ -6,26 +6,26 @@
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xshiraori.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Using CVE-2023-41772 against kernel mode protections</title>
+      <title>Reversing Windows&#39; TCP PartitionTable: how GetTcpTable and netstat works under the hood</title>
       <link>https://xshiraori.github.io/reversing-windows-tcp-partition-table-bringing-back-volatility-netscan-module/</link>
-      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
       
       <guid>https://xshiraori.github.io/reversing-windows-tcp-partition-table-bringing-back-volatility-netscan-module/</guid>
-      <description>Weaponizing a CVE Against Anti-Cheats So I&#39;ve been working on this for a while now and I finally got the full chain working. The idea is simple, anti-cheats use ObRegisterCallbacks to strip your handles when you try to open their process.
-The exploit leverages CVE-2023-41772 with its POC that triggers code execution inside PPL-WinTcb WerFaultSecure.exe to get an all access handle on protected games.
-If we can get code running inside csrss, we can OpenProcess(PROCESS_ALL_ACCESS) on any process below the chain and the anti-cheat&#39;s kernel callbacks just have to let it go because disallowing csrss is looking for trouble.</description>
+      <description>Reversing Windows’ TCP PartitionTable: how GetTcpTable and netstat works under the hood Let&#39;s trace what happens when you use the &amp;ldquo;netstat&amp;rdquo; command, from usermode all the way down to the kernel hash tables that store TCP connections inside tcpip.sys.
+We start tracing from GetTcpTable, which is just a wrapper over GetTcpTableInternal. This function is responsible for processing the TCP table data returned from a call to NsiAllocateAndGetTable .
+NsiAllocateAndGetTable carries our analysis to the kernel side, by invoking the handler for 0x12001B IOCTL code of the nsiproxy.</description>
     </item>
     
     <item>
-      <title></title>
+      <title>Using CVE-2023-41772 against kernel mode protections</title>
       <link>https://xshiraori.github.io/using-existing-cve-to-bypass-kernel-mode-protections/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://xshiraori.github.io/using-existing-cve-to-bypass-kernel-mode-protections/</guid>
       <description>Weaponizing a CVE Against Anti-Cheats So I&#39;ve been working on this for a while now and I finally got the full chain working. The idea is simple, anti-cheats use ObRegisterCallbacks to strip your handles when you try to open their process.
